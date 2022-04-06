@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>HTML</title>
+
+    <!-- HTML -->
+
+
+    <!-- Custom Styles -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    
+</head>
+
+<body>
+    <div id="app">
+        <!--
+        <img v-bind:src="image" v-bind:alt="name">
+        <h1>{{name}} {{surname}}</h1>
+        <h2>{{email}}</h2>
+        <h3>{{telephone}}</h3>
+        <button v-bind:class="gender" @click="obtemUser">new random user</button>
+    --> 
+    
+    <div class="container">
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-text">
+              queue0.in 
+            </span>
+          </nav>
+        <div class="row">
+        <div class="col-4">
+        <div class="card-deck mb-3 text-center"> 
+            <div class="card mb-4 box-shadow">
+              <div class="card-header bg-success">
+                <h4 class="my-0 font-weight-normal">Active</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title"> <small class="text-muted"> Queue id : 955</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li><h1 class="card-title pricing-card-title"> <small class="text-muted">Phone : ******8172</small></h1></li>
+                  <li><h1 class="card-title pricing-card-title"> <small class="text-muted">Goto # 1</small></h1></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+                 
+              </div>
+            </div>
+        </div>  
+        </div> 
+    <!-- Project -->  
+        <div class="col-4">
+        <div class="card-deck mb-3 text-center">
+          <div class="card mb-4 box-shadow">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">Queue 1</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title"> <small class="text-muted"> Queue id : 955</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li><h1 class="card-title pricing-card-title"> <small class="text-muted">Phone : ******8172</small></h1></li>
+                 
+              </ul>
+               
+            </div>
+          </div>
+          <div class="card mb-4 box-shadow">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">Queue 2</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title"> <small class="text-muted"> Queue id : 955</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li><h1 class="card-title pricing-card-title"> <small class="text-muted">Phone : ******8172</small></h1></li>
+                 
+              </ul>
+              
+            </div>
+          </div>
+          <div class="card mb-4 box-shadow">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">Queue 3</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title"> <small class="text-muted"> Queue id : 955</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li><h1 class="card-title pricing-card-title"> <small class="text-muted">Phone : ******8172</small></h1></li>
+               
+              </ul> 
+            </div>
+          </div>
+        </div> 
+        </div>
+    </div>
+
+
+    </div><!--app-->
+
+
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                image: "https://terminalroot.com.br/assets/img/about/author.jpg",
+                name: "eriton",
+                surname: "Santos",
+                email: "eunaosei@gmail.com",
+                telephone: "+55 (85) xxx-6664",
+                gender: "mascule",
+            },
+            methods: {
+                async obtemUser() {
+                    const res = await fetch("https://randomuser.me/api")
+                    const { results } = await res.json()
+                    //console.log(result)
+                    this.image = results[0].picture.large
+                    this.name = results[0].name.first
+                    this.surname = results[0].name.last
+                    this.email = results[0].email
+                    this.telephone = results[0].phone
+                    results[0].gender == 'male' ? this.gender = 'mascule' : this.gender = 'female'
+
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>
